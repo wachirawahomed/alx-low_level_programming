@@ -16,6 +16,7 @@ int main(void)
 	{
 		printf("%c ", al);
 	}
+	putchar('\n');
 	return (0);
 
 }
