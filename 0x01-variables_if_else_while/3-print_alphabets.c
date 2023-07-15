@@ -10,11 +10,11 @@ int main(void)
 
 	for (al = 'a'; al <= 'z'; ++al)
 	{
-		printf("%c ", al);
+		putchar(al);
 	}
 	for (al = 'A'; al <= 'Z'; ++al)
 	{
-		printf("%c ", al);
+		putchar(al);
 	}
 	putchar('\n');
 	return (0);
