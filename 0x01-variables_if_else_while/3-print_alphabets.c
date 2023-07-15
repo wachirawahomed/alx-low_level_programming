@@ -8,17 +8,14 @@ int main(void)
 {
 	char al;
 
-	while (al < 'z')
+	for (al = 'a'; al <= 'z'; ++al)
 	{
-		putchar(al);
-		al++;
+		printf("%c ", al);
 	}
-	while (al < 'Z')
+	for (al = 'A'; al <= 'Z'; ++al)
 	{
-		putchar(al);
-		al++;
+		printf("%c ", al);
 	}
-	putchar('\n');
 	return (0);
 
 }
