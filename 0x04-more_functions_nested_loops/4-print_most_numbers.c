@@ -4,6 +4,7 @@
  * print_number - prints the numbers from 0-9, skips 2 and 4.
  *
  */
+
 void print_most_numbers(void)
 {
 	char n;
