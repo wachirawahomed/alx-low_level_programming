@@ -2,8 +2,7 @@
 
 /**
  * rev_string - function that reverses a string.
- * @s - the string to be reversed
- *
+ *@s: string
  *return: 0 always
  */
 void rev_string(char *s)
