@@ -11,20 +11,15 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int res;
+	int res = 0;
+	int index;
 
-	if (s1 < s2)
+	while (s1[index] == s2[index] && s1[index] != '\0')
 	{
-		res = -15;
+		index++;
 	}
-	else if (s1 > s2)
-	{
-		res = 15;
-	}
-	else
-	{
-		res = 0;
-	}
+
+	res = s1[index] - s2[index];
 
 	return (res);
 }
