@@ -6,26 +6,26 @@
  * Return: the capitalized string
  */
 
-char *cap_string(char *c)
+char *cap_string(char *s)
 {
 	int i = 0;
-	if (c[i] >= 'a' && c[i] <= 'z')
+
+	if (s[i] >= 'a' && s[i] <= 'z')
+		s[i] = s[i] - 'a' + 'A';
+	i++;
+
+	while (s[i] != '\0') /* iterate through string */
 	{
-		c[i] = c[i] - 32;
+		if ((s[i] >= 'a' && s[i] <= 'z') && (s[i - 1] == ','
+				|| s[i - 1] == ';' || s[i - 1] == '.'
+				|| s[i - 1] == '!' || s[i - 1] == '?'
+				|| s[i - 1] == '"' || s[i - 1] == '('
+				|| s[i - 1] == ')' || s[i - 1] == '{'
+				|| s[i - 1] == '}' || s[i - 1] == ' '
+				|| s[i - 1] == '\t' || s[i - 1] == '\n'))
+			s[i] = s[i] - 'a' + 'A';
+		i++;
 	}
-	for (; c[i] != '\0'; i++)
-	{
-		if (c[i] == ' ' || c[i] == '\t' || c[i] == '\n' || c[i] == ',' || c[i] == ';'
-			       	|| c[i] == '.' || c[i] == '!' || c[i] == '?'
-				|| c[i] == '"' || c[i] == '(' || c[i] == ')'
-				|| c[i] == '{' || c[i] == '}')
-		{
-			if (c[i] >= 'a' && c[i] <= 'z')
-			{	
-				c[i] = c[i] - 32;
-			}
-		
-		}
-	}
-	return (c);
+
+	return (s);
 }
