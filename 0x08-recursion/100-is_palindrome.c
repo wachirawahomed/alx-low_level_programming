@@ -7,12 +7,12 @@
  * Return: 1 if string is a palindrome, 0 otherwise.
  */
 
-int palindrome(char *al, char *o)
+int palindrome(char *al, char *om)
 {
-	if (al >= o)
+	if (al >= om)
 		return (1);
-	if (al == o)
-		return (palindrome (al + 1, o - 1));
+	if (al == om)
+		return (palindrome al + 1, om - 1);
 	else
 		return (1);
 }
@@ -45,6 +45,6 @@ int is_palindrome(char *s)
 {
 	int l = _slength(s);
 
-	return (palindrome (s ,(s + (l - 1))));
+	return (palindrome(s, (s + (l - 1))i));
 }
 

@@ -20,7 +20,7 @@ int iprime_num(int n, int div)
  * is_prime_number - returns 1 if the input integer is a
  * prime number, otherwise return 0.
  * @n: an integer.
- * Returns: 1 if n is a prime number otherwise 0
+ * Return: 1 if n is a prime number otherwise 0
  */
 
 int is_prime_number(int n)
