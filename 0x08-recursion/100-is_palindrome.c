@@ -7,14 +7,14 @@
  * Return: 1 if string is a palindrome, 0 otherwise.
  */
 
-int palindrome(int al, int om)
+int palindrome(char *al, char *o)
 {
-	if (al >= om)
+	if (al >= o)
 		return (1);
-	if (al == om)
-		return (palindrome (al + 1, om - 1));
+	if (al == o)
+		return (palindrome (al + 1, o - 1));
 	else
-		return (0);
+		return (1);
 }
 
 
