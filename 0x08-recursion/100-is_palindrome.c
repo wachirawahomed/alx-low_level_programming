@@ -12,7 +12,7 @@ int palindrome(int al, int om)
 	if (al >= om)
 		return (1);
 	if (al == om)
-		return ( palindrome (al + 1, om -1));
+		return (palindrome (al + 1, om - 1));
 	else
 		return (0);
 }
@@ -27,12 +27,14 @@ int palindrome(int al, int om)
 int _slength(char *s)
 {
 	if (*s != '\0')
+	{
 		s++;
 		return (1 + (_slength(s)));
+	}
 	else
 		return (0);
 }
-		
+
 /**
  * is_palindrome -  returns 1 if a string is a palindrome and 0 if not.
  * @s: string
@@ -41,6 +43,8 @@ int _slength(char *s)
 
 int is_palindrome(char *s)
 {
-	int l = _slenght(s);
-	return (palindrome (s , (s + (l - 1)));
+	int l = _slength(s);
+
+	return (palindrome (s ,(s + (l - 1))));
 }
+
