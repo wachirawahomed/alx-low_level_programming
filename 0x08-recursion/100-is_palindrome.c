@@ -9,10 +9,10 @@
 
 int palindrome(char *al, char *om)
 {
-	if (al >= om)
+	if (*al >= *om)
 		return (1);
-	if (al == om)
-		return (palindrome al + 1, om - 1);
+	if (*al == *om)
+		return (palindrome(al + 1, om - 1));
 	else
 		return (1);
 }
@@ -45,6 +45,6 @@ int is_palindrome(char *s)
 {
 	int l = _slength(s);
 
-	return (palindrome(s, (s + (l - 1))i));
+	return (palindrome(s, (s + (l - 1))));
 }
 
