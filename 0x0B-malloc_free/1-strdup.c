@@ -7,13 +7,13 @@
  * Return: NULL if str = NULL or insufficient memory,
  * On success a pointer to the duplicated string.
  */
- char *_strdup(char *str)
+char *_strdup(char *str)
 {
 	char *duplt;
 	int n;
 	int len = 0;
 
-	if(str == NULL)
+	if (str == NULL)
 		return (NULL);
 
 	for (n = 0; str[n] != '\0'; n++)
