@@ -23,10 +23,16 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (ptr == NULL)
 	{
 		ptr = malloc(new_size * sizeof(void *));
-			if (ptr == NULL)
-				return (NULL);
-			return (ptr);
+		if (ptr == NULL)
+			return (NULL);
+		return (ptr);
 	}
 	nmem = malloc(new_size * sizeof(char));
 	if (nmem == NULL)
-	return (NULL);
+		return (NULL);
+	for (i = 0; i < old_size && i < new_size; i++)
+		nmem[i] = *((char *)ptr + i);
+	free(ptr);
+
+	return (nmem);
+}
