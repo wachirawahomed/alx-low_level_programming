@@ -29,7 +29,10 @@ int main(int argc, char *argv[])
 	array = (char *)main;
 	for (i = 0; i < no_bytes; i++)
 	{
-		printf("%02hhx\n", array[i]);
+		printf("%02hhx", array[i]);
+		if (i == no_bytes - 1)
+			continue;
+		printf(" ");
 	}
 	printf("\n");
 
