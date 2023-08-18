@@ -9,4 +9,15 @@ void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 int _putchar(char c);
 
+/**
+ * struct at - Struct
+ * @ltr: type of data
+ * @func: pointer to associated function
+ */
+typedef struct at
+{
+	char ltr;
+	void (*func)(va_list);
+} any_t;
+
 #endif
