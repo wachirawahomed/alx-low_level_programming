@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * free_listint2 - a function that frees a listint_t list.
- * @head - a double pointer to head node.
+ * @head: a double pointer to head node.
  */
 void free_listint2(listint_t **head)
 {
