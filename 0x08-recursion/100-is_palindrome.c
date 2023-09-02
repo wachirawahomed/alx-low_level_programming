@@ -26,13 +26,13 @@ int palindrome(char *al, char *om)
 
 int _slength(char *s)
 {
-	if (*s != '\0')
+	if (*s == '\0')
+		return (0);
+	else
 	{
 		s++;
-		return (1 + (_slength(s)));
+		return (_slength(s +1) +1);
 	}
-	else
-		return (0);
 }
 
 /**
@@ -45,6 +45,6 @@ int is_palindrome(char *s)
 {
 	int l = _slength(s);
 
-	return (palindrome(s, (s + (l - 1))));
+	return (palindrome(s, (s + l - 1)));
 }
 
