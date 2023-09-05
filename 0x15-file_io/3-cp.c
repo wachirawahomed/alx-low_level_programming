@@ -56,11 +56,11 @@ int main(int argc, char *argv[])
 	while ((n_read = read(fd_1, buffer, 1024)) != 0)
 	{
 		if (n_read == -1)
-				__exit(98, argv[1], 0);
+			__exit(98, argv[1], 0);
 
 		n_wrote = write(fd_2, buffer, n_read);
 		if (n_wrote == -1)
-				__exit(99, argv[2], 0);
+			__exit(99, argv[2], 0);
 	}
 
 	close(fd_2) == -1 ? (__exit(100, NULL, fd_2)) : close(fd_2);
