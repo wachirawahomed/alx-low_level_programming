@@ -197,23 +197,23 @@ void elf_type(const unsigned char *buffer, int big_endian)
 		"DYN (Shared object file)",
 		"CORE (Core file)"
 	};
-	unsigned int type;
+	unsigned int type_t;
 
 	printf("  %-34s ", "Type:");
 
 	if (big_endian)
-		type = 0x100 * buffer[16] + buffer[17];
+		type_t = 0x100 * buffer[16] + buffer[17];
 	else
-		type = 0x100 * buffer[17] + buffer[16];
+		type_t = 0x100 * buffer[17] + buffer[16];
 
-	if (type < 5)
-		printf("%s\n", type_table[type]);
-	else if (type >= ET_LOOS && type <= ET_HIOS)
-		printf("OS Specific: (%4x)\n", type);
-	else if (type >= ET_LOPROC && type <= ET_HIPROC)
-		printf("Processor Specific: (%4x)\n", type);
+	if (type_t < 5)
+		printf("%s\n", type_table[type_t]);
+	else if (type_t >= ET_LOOS && type_t <= ET_HIOS)
+		printf("OS Specific: (%4x)\n", type_t);
+	else if (type_t >= ET_LOPROC && type_t <= ET_HIPROC)
+		printf("Processor Specific: (%4x)\n", type_t);
 	else
-		printf("<unknown: %x>\n", type);
+		printf("<unknown: %x>\n", type_t);
 }
 
 /**
@@ -224,30 +224,30 @@ void elf_type(const unsigned char *buffer, int big_endian)
  */
 void elf_entry(const unsigned char *buffer, size_t bit_mode, int big_endian)
 {
-	int address_size = bit_mode / 8;
+	int address_sz = bit_mode / 8;
 
 	printf("  %-34s 0x", "Entry point address:");
 
 	if (big_endian)
 	{
-		while (address_size && !*(buffer))
-			--address_size, ++buffer;
+		while (address_sz && !*(buffer))
+			--address_sz, ++buffer;
 
 		printf("%x", *buffer & 0xff);
 
-		while (--address_size > 0)
+		while (--address_sz > 0)
 			printf("%02x", *(++buffer) & 0xff);
 	}
 	else
 	{
-		buffer += address_size;
+		buffer += address_sz;
 
-		while (address_size && !*(--buffer))
-			--address_size;
+		while (address_sz && !*(--buffer))
+			--address_sz;
 
 		printf("%x", *buffer & 0xff);
 
-		while (--address_size > 0)
+		while (--address_sz > 0)
 			printf("%02x", *(--buffer) & 0xff);
 	}
 
