@@ -1,11 +1,11 @@
 #include "main.h"
 /**
- * * __exit - prints error messages and exits with exit value
- * * @error: num is either exit value or file descriptor
- * * @s: str is a name, either of the two filenames
- * * @fd: file descriptor
- * * Return: 0 on success
- * */
+ * __exit - prints error messages and exits with exit value
+ * @error: num is either exit value or file descriptor
+ * @s: str is a name, either of the two filenames
+ * @fd: file descriptor
+ * Return: 0 on success
+ */
 int __exit(int error, char *s, int fd)
 {
 	switch (error)
@@ -28,11 +28,11 @@ int __exit(int error, char *s, int fd)
 }
 
 /**
- * * main - copies one file to another
- * * @argc: should be 3 (./a.out copyfromfile copytofile)
- * * @argv: first is file to copy from (fd_1), second is file to copy to (fd_2)
- * * Return: 0 (success), 97-100 (exit value errors)
- * */
+ * main - copies one file to another
+ * @argc: should be 3 (./a.out copyfromfile copytofile)
+ * @argv: first is file to copy from (fd_1), second is file to copy to (fd_2)
+ * Return: 0 (success), 97-100 (exit value errors)
+ */
 int main(int argc, char *argv[])
 {
 	int fd_1, fd_2, n_read, n_wrote;
