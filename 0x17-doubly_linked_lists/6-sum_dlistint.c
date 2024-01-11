@@ -4,7 +4,7 @@
  * @head: pointer to head of the list
  * Return: sum of all nodes or 0
  **/
- int sum_dlistint(dlistint_t *head)
+int sum_dlistint(dlistint_t *head)
 {
 	int sum = 0;
 
