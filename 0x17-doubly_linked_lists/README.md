@@ -9,9 +9,9 @@
 - 7-insert_dnodeint.c, 2-add_dnodeint.c, 3-add_dnodeint_end.c -  a function that inserts a new node at a given position.  
 - 8-delete_dnodeint.c - a function that deletes the node at index index of a dlistint_t linked list.  
 - 100-password - Find the password for crackme4.  
-+ Save the password in the file 100-password  
-+ Your file should contain the exact password, no new line, no extra space  
-+ Hint: The program prints “OK” when the password is correct  
+	+ Save the password in the file 100-password  
+	+ Your file should contain the exact password, no new line, no extra space  
+	+ Hint: The program prints “OK” when the password is correct  
 - 102-result - A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.  
 Find the largest palindrome made from the product of two 3-digit numbers.  
 	+ Save the result in the file 102-result  
