@@ -55,7 +55,8 @@
 ## Task 7. $ht['Betty'] = 'Cool'  - 100-sorted_hash_table.c  
 - For this task, please:  
 	- Read PHP Internals Book: HashTable  
-	- Use the same hash function:
+	- Use the same hash function:  
+	- Use these data structures:
 
 		/**  
 		 * struct shash_node_s - Node of a sorted hash table  
@@ -94,7 +95,6 @@
 			 shash_node_t *stail;  
 		} shash_table_t;  
 
-Use these data structures:  
 - Rewrite the previous functions using these data structures:  
 + shash_table_t *shash_table_create(unsigned long int size);  
 + int shash_table_set(shash_table_t *ht, const char *key, const char *value);  
