@@ -30,6 +30,38 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
+ * create_new_node - Creates a new node for the sorted hash table.
+ * @key: The key for the node.
+ * @value: The value associated with the key.
+ * Return: A pointer to the newly created node.
+ */
+shash_node_t *create_new_node(const char *key, const char *value)
+{
+	shash_node_t *new_node = malloc(sizeof(shash_node_t));
+
+	if (new_node == NULL)
+		return (NULL);
+
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
+	{
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->value = strdup(value);
+	if (new_node->value == NULL)
+	{
+		free(new_node->key);
+		free(new_node);
+		return (NULL);
+	}
+
+	new_node->next = NULL;
+	return (new_node);
+}
+
+/**
  * shash_table_set - Adds an element to the sorted hash table.
  * @ht: The sorted hash table.
  * @key: The key. It can't be an empty string.
@@ -43,26 +75,9 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
 
-	new_node = malloc(sizeof(shash_node_t));
+	new_node = create_new_node(key, value);
 	if (new_node == NULL)
 		return (0);
-
-	new_node->key = strdup(key);
-	if (new_node->key == NULL)
-	{
-		free(new_node);
-		return (0);
-	}
-
-	new_node->value = strdup(value);
-	if (new_node->value == NULL)
-	{
-		free(new_node->key);
-		free(new_node);
-		return (0);
-	}
-
-	new_node->next = NULL;
 
 	if (ht->shead == NULL)
 	{
@@ -73,9 +88,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	{
 		temp = ht->shead;
 		while (temp != NULL && strcmp(temp->key, key) < 0)
-		{
 			temp = temp->snext;
-		}
 
 		if (temp == NULL)
 		{
@@ -94,7 +107,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			temp->sprev = new_node;
 		}
 	}
-
 	return (1);
 }
 
@@ -102,7 +114,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  * shash_table_get - Retrieves a value associated with a key.
  * @ht: The sorted hash table.
  * @key: The key to search for.
- * Return: The value associated with the key, or NULL if key couldn’t be found.
+ * Return: The value associated with the key, or NULL otherwise
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
@@ -178,7 +190,6 @@ void shash_table_delete(shash_table_t *ht)
 		return;
 
 	temp = ht->shead;
-
 	while (temp != NULL)
 	{
 		next = temp->snext;
@@ -187,7 +198,6 @@ void shash_table_delete(shash_table_t *ht)
 		free(temp);
 		temp = next;
 	}
-
 	free(ht->array);
 	free(ht);
 }
