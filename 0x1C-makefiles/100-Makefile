@@ -1,24 +1,49 @@
-# 6. make -f 100-Makefile
-
+# Compiler
 CC = gcc
-SRC = main.c school.c
+
+# Source files
+SRC = $(wildcard *.c)
+
+# Object files derived from source files
 OBJ = $(SRC:.c=.o)
+
+# Executable name
 NAME = school
-CFLAGS = -Wall -Werror -Wextra -pedantic
-RM = /bin/rm -f
 
-.PHONY: all clean fclean oclean re
+# Compiler flags (your favorite compiler flags)
+CFLAGS := -Wall -Werror -Wextra -pedantic
 
-all: m.h $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+# Rule: all (builds the executable if needed)
+all: $(NAME)
 
+# Rule to build the executable
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -o $@ $^
+
+# Rule to compile source files
+$(OBJ): $(SRC) m.h
+	@$(CC) $(CFLAGS) -c -o $@ $*.c
+
+# Phony targets
+.PHONY: clean oclean fclean re
+
+# Rule: clean (deletes all Emacs and Vim temporary files along with the executable)
 clean:
-	$(RM) *~ $(NAME)
+	@/bin/rm -f *~ $(NAME)
 
+# Rule: oclean (deletes the object files)
 oclean:
-	$(RM) $(OBJ)
+	@/bin/rm -f $(filter-out $(NAME:.c=.o), $(wildcard *.o))
 
+# Rule: fclean (deletes all Emacs and Vim temporary files, the executable, and the object files)
 fclean: clean oclean
+	@/bin/rm -f $(NAME)
 
-re: oclean all
+# Rule: re (forces recompilation of all source files)
+re: fclean all
+
+# Check for missing header file
+ifeq (,$(wildcard m.h))
+$(error Header file m.h is missing)
+endif
 
