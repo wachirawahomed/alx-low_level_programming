@@ -5,31 +5,18 @@ NAME = school
 RM = /bin/rm -f
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
-# Generate dependency files for each source file
-DEP = $(SRC:.c=.d)
-
-# Include dependency files
--include $(DEP)
-
-# Rule to generate dependency files
-%.d: %.c
-	$(CC) -Wall -Werror -Wextra -pedantic -MM $< -MT $(@:.d=.o) > $@
-
 .PHONY: all clean fclean oclean re
 
-all: $(OBJ)
+all: m.h $(OBJ)
 	$(CC) -Wall -Werror -Wextra -pedantic $(OBJ) -o $(NAME)
 
 clean:
 	$(RM) *~ $(NAME)
 
 oclean:
-	$(RM) $(OBJ) $(DEP)
+	$(RM) $(OBJ)
 
-fclean: clean oclean
+fclean: clean ocean
 
 re: oclean all
-
-m.h:
-	@echo "Header file m.h is missing."; exit 1
 
