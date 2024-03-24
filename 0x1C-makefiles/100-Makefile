@@ -1,21 +1,29 @@
+# Makefile for compiling the school program
+
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:%.c=%.o)
 NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
+# Phony targets to prevent conflicts with file names
 .PHONY: all clean oclean fclean re
 
+# Build the executable 'school'
 all: m.h $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
+# Clean Emacs and Vim temporary files and the executable
 clean:
 	$(RM) *~ $(NAME)
 
+# clean object files
 oclean:
 	$(RM) $(OBJ)
 
+# Clean all generated files including object files and the executable
 fclean: clean ocean
 
+# Deletes all & recompiles all source files
 re: fclean all
 
