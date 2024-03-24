@@ -5,6 +5,16 @@ NAME = school
 RM = /bin/rm -f
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
+# Generate dependency files for each source file
+DEP = $(SRC:.c=.d)
+
+# Include dependency files
+-include $(DEP)
+
+# Rule to generate dependency files
+%.d: %.c
+	$(CC) -Wall -Werror -Wextra -pedantic -MM $< -MT $(@:.d=.o) > $@
+
 .PHONY: all clean fclean oclean re
 
 all: $(OBJ)
@@ -14,9 +24,9 @@ clean:
 	$(RM) *~ $(NAME)
 
 oclean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(DEP)
 
-fclean: clean
+fclean: clean oclean
 
 re: oclean all
 
